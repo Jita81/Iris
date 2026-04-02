@@ -8,6 +8,9 @@
     "apps/*"
   ],
   "scripts": {
+    "postinstall": "node scripts/setup-rhubarb.mjs",
+    "setup": "node scripts/setup-rhubarb.mjs",
+    "verify": "node scripts/verify-product.mjs",
     "client": "yarn --cwd apps/frontend dev",
     "server": "yarn --cwd apps/backend dev",
     "dev": "npm-run-all --parallel client server"

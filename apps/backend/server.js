@@ -6,6 +6,7 @@ import { lipSync } from "./modules/lip-sync.mjs";
 import { sendDefaultMessages, defaultResponse } from "./modules/defaultMessages.mjs";
 import { voice } from "./modules/elevenLabs.mjs";
 import { convertAudioToText } from "./modules/whisper.mjs";
+import { getReadiness, logStartupReadiness } from "./modules/readiness.mjs";
 
 dotenv.config();
 
@@ -15,6 +16,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const port = 3000;
+
+logStartupReadiness();
+
+app.get("/health", async (req, res) => {
+  const readiness = await getReadiness();
+  res.json({ status: "ok", productionReady: readiness.ok, ...readiness });
+});
 
 app.get("/voices", async (req, res) => {
   res.send(await voice.getVoices(elevenLabsApiKey));

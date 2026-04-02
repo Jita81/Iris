@@ -160,10 +160,12 @@ git@github.com:asanchezyali/talking-avatar-with-ai.git
 cd digital-human
 ```
 
-3. Install dependencies for monorepo:
+3. Install dependencies for monorepo (this also runs **`yarn setup`**, which downloads Rhubarb Lip-Sync into `apps/backend/bin/` when it is missing — set `SKIP_RHUBARB_SETUP=1` to skip):
 ```bash
 yarn
 ```
+You can re-run the Rhubarb step anytime with `yarn setup`. To confirm models, Rhubarb, and ffmpeg: `yarn verify`.
+
 4. Create a .env file in the root `/apps/backend/` of the project and add the following environment variables:
 
 ```bash

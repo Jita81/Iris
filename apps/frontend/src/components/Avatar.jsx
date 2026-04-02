@@ -86,7 +86,7 @@ export function Avatar(props) {
     }
 
     const appliedMorphTargets = [];
-    if (message && lipsync) {
+    if (message && lipsync && audio) {
       const currentAudioTime = audio.currentTime;
       for (let i = 0; i < lipsync.mouthCues.length; i++) {
         const mouthCue = lipsync.mouthCues[i];
